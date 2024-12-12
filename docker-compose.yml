@@ -12,7 +12,7 @@ services:
       - mysql-db
     env_file:
       - ./vars.env
-    entrypoint: bash wait-for-it.sh mysql-db:3306 -t 300 -- bash startup.sh
+    entrypoint: ["./wait-for-it.sh", "mysql-db:3306", "-t", "30", "--", "bash", "startup.sh"]
 
   mysql-db:
     image: mysql:5.7
